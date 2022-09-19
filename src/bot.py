@@ -19,7 +19,6 @@ def _get_extensions(param):
     yield 'modules.8ball'
     if param.get('release') == "development":
         yield 'modules.debug'
-        yield 'modules.test'
     
 class EEServ(commands.AutoShardedBot):
     user: discord.ClientUser
