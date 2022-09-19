@@ -16,8 +16,10 @@ Almighty bot \n
 def _get_extensions(param):
     yield 'modules.basic_mod'
     yield 'modules.jokes'
+    yield 'modules.8ball'
     if param.get('release') == "development":
         yield 'modules.debug'
+        yield 'modules.test'
     
 class EEServ(commands.AutoShardedBot):
     user: discord.ClientUser
@@ -55,6 +57,9 @@ class EEServ(commands.AutoShardedBot):
     async def on_ready(self):
         for ext in _get_extensions(self.param):
             await self.load_extension(ext)
+
+        print(f'Logged in as {self.user} (ID: {self.user.id})')
+        print('------')
 
     async def start_bot(self)->None:
         await self.start(self.param.get("token"))
